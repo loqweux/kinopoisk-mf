@@ -19,6 +19,24 @@ export default class Kinopoisk {
       console.error("Ошибка при получении данных: ", e);
     }
   }
+  static async getTop250Movies() {
+    try {
+      const response = await fetch(
+        `${baseUrl}/api/v2.2/films/collections?type=TOP_250_MOVIES&page=1`,
+        {
+          method: "GET",
+          headers: {
+            "X-API-KEY": apiKey,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return await response.json();
+    } catch (e) {
+      console.error("Ошибка при получении данных: ", e);
+      return null;
+    }
+  }
   static async getMovieById(id) {
     try {
       const response = await fetch(`${baseUrl}/api/v2.2/films/${id}`, {
@@ -31,6 +49,23 @@ export default class Kinopoisk {
       return await response.json();
     } catch (e) {
       console.error("Ошибка при получении данных о фильме: ", e);
+    }
+  }
+  static async getPremieres(year, month) {
+    try {
+      const response = await fetch(
+        `${baseUrl}/api/v2.2/films/premieres?year=${year}&month=${month}`,
+        {
+          method: "GET",
+          headers: {
+            "X-API-KEY": apiKey,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      return await response.json();
+    } catch (e) {
+      console.error("Ошибка при получении премьер: ", e);
     }
   }
 }

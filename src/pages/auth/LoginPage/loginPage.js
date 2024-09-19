@@ -4,7 +4,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 
 export default function loginPage(auth) {
   app.innerHTML = `
-    <nav>
+  <div class="sign-in">
+        <nav>
       <img src="./assets/Logo.webp" alt="Logo" />
     </nav>
     <div class="wrapper-form">
@@ -33,6 +34,7 @@ export default function loginPage(auth) {
         <span class="error none"></span>
       </form>
     </div>
+  </div>
   `;
 
   const formLogin = document.forms.loginForm;

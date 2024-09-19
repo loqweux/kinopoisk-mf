@@ -5,6 +5,7 @@ import loginPage from "./pages/auth/LoginPage/loginPage";
 import moviesPage from "./pages/movies";
 import homePage from "./pages/home";
 import registerPage from "./pages/auth/RegisterPage/registerPage";
+import movieHome from "./pages/movieHome";
 
 initializeApp(firebaseConfig);
 
@@ -24,8 +25,8 @@ onAuthStateChanged(auth, (user) => {
       case "/home":
         homePage(auth);
         break;
-      case "/movies":
-        homePage(auth);
+      case "/movieHome":
+        movieHome(auth);
         break;
       case "/register":
         registerPage(auth);
@@ -46,7 +47,7 @@ function validateUser(user) {
   } else if (
     user &&
     window.location.pathname !== "/home" &&
-    window.location.pathname !== "/movies" &&
+    window.location.pathname !== "/movieHome" &&
     !window.location.pathname.startsWith("/movies/")
   ) {
     window.location.pathname = "/home";
